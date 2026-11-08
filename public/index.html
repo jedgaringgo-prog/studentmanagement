@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100b16">
+  <title>Neon StudentHub | Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-pink"></div><div class="ambient ambient-green"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">S</span><span>NEON<span class="brand-light">HUB</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="#dashboard"><span>▦</span> Dashboard</a>
+      <a class="nav-link" href="#students"><span>♙</span> Students</a>
+      <div class="sidebar-bottom">
+        <div class="online-dot"></div><span>System operational</span>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div><div class="eyebrow">STUDENT MANAGEMENT SYSTEM</div><h1>Dashboard<span class="pink-dot">.</span></h1></div>
+        <div class="admin-chip"><span class="admin-avatar">A</span><span><b>Administrator</b><small>Dashboard admin</small></span></div>
+      </header>
+
+      <section class="welcome-panel">
+        <div class="welcome-copy"><span class="welcome-tag">✦ WELCOME BACK</span><h2>Manage your students.<br><span>Make an impact.</span></h2><p>Your student records, organized in one place.</p></div>
+        <div class="welcome-orb"><span>✦</span></div>
+      </section>
+
+      <section class="stats-grid" aria-label="Student statistics">
+        <article class="stat-card pink-card"><div class="stat-top"><span>Total Students</span><span class="stat-icon">♙</span></div><strong id="totalCount">0</strong><small>All registered students</small></article>
+        <article class="stat-card green-card"><div class="stat-top"><span>Active Students</span><span class="stat-icon">✓</span></div><strong id="activeCount">0</strong><small>Currently active</small></article>
+        <article class="stat-card purple-card"><div class="stat-top"><span>Inactive Students</span><span class="stat-icon">Ⅱ</span></div><strong id="inactiveCount">0</strong><small>Currently inactive</small></article>
+      </section>
+
+      <section class="content-card" id="students">
+        <div class="section-heading"><div><div class="eyebrow">RECORD MANAGEMENT</div><h2>Student Records</h2><p>View, search, add, and manage student information.</p></div><button class="primary-btn" id="addStudentBtn"><span>＋</span> Add Student</button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name or email..."></label><select id="courseFilter"><option value="All Courses">All Courses</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>EMAIL ADDRESS</th><th>COURSE</th><th>YEAR LEVEL</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="studentTable"><tr><td colspan="6" class="empty-state">Loading student records...</td></tr></tbody></table></div>
+        <div class="table-footer"><span id="recordCount">Showing 0 records</span><span class="footer-status"><i></i> Live database</span></div>
+      </section>
+      <footer>NEONHUB <span>•</span> STUDENT MANAGEMENT SYSTEM</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><div class="eyebrow">STUDENT INFORMATION</div><h2 id="modalTitle">Add Student</h2></div><button class="icon-btn" id="closeModalBtn" aria-label="Close">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label>First Name<input name="first_name" required maxlength="60" placeholder="e.g. Alex"></label>
+          <label>Last Name<input name="last_name" required maxlength="60" placeholder="e.g. Morgan"></label>
+          <label class="full-field">Email Address<input name="email" type="email" required placeholder="alex@email.com"></label>
+          <label>Course<select name="course" required><option value="">Select course</option><option>BSIT</option><option>BSCS</option><option>BSIS</option><option>BSBA</option><option>BSED</option><option>BEED</option><option>Other</option></select></label>
+          <label>Year Level<select name="year_level" required><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></option></select></label>
+          <label class="full-field">Status<select name="status"><option>Active</option><option>Inactive</option></select></label>
+        </div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelBtn">Cancel</button><button class="primary-btn" type="submit" id="saveBtn">Save Student</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
